@@ -19,7 +19,7 @@ module.exports = {
   getAll: () => {
     // returns a new promise that will either resolve or reject
     return new Promise( (resolve, reject) => {
-      // runs the method all on the variable db and selects all data within the db. Then executes an anonymous function that either returns an error or the data
+      // runs the method all on the variable db and selects all data within the db. Then it makes the data available to be executed in the controller
       db.all(`SELECT * FROM Product_Types`, (err, Data) => {
         // if there's an error, it rejects and displays an error within the console
         if(err) return reject(err);
