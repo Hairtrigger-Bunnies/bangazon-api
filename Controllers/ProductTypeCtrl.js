@@ -24,6 +24,7 @@ module.exports.getProductTypes = (req, res, next) => {
   .catch( (err) => next(err));
 };
 
+
 module.exports.getProductType = ({params: {id}}, res, next) => {
   getOne(id)
   .then( (direx) => {
