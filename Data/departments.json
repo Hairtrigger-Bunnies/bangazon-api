@@ -1,0 +1,14 @@
+{
+    "departments": [
+      {
+        "name": "Dept.1",
+        "expense_budget": 6000,
+        "supervisor": "Hank"
+      },
+      {
+        "name": "Dept.2",
+        "expense_budget": 12000,
+        "supervisor": "Ed"
+      }
+    ]
+  }
