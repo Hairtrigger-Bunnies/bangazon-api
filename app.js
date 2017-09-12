@@ -12,7 +12,7 @@ app.use(middleware);
 
 
 let routes = require('./Routes/');
-app.use(`/bangazon/`, routes);
+app.use(`/bangazon-api/`, routes);
 
 app.use( (req, res, next) => {
   let err = new Error('Not Found, dummy');
