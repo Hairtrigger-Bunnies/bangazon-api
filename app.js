@@ -11,7 +11,7 @@ const middleware = (req, res, next) => {
 app.use(middleware);
 
 
-let routes = require('./routes/');
+let routes = require('./Routes/');
 app.use(`/bangazon/`, routes);
 
 app.use( (req, res, next) => {

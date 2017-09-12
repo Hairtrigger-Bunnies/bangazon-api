@@ -9,7 +9,7 @@
 
 'use strict';
 
-const { getAll } = require('../models/Products');
+const { getAll } = require('../Model/Products');
 
 module.exports.getProducts = (req, res, next) => {
   getAll()
