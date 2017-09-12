@@ -18,10 +18,9 @@ module.exports = {
         resolve(product);
       });
     });
-  }
-}
+  },
 
-module.exports = {
+
   getOne: (id) => {
     return new Promise( (resolve, reject) => {
       db.all(`SELECT title
