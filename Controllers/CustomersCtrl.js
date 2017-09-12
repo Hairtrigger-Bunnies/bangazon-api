@@ -3,17 +3,31 @@
 // By using the URL parameter /customers/?active=false, 
 // the JSON response should only contain customers that don't 
 // have any orders placed yet.
-'use strict';
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/mediaStore.sqlite');
 
-module.exports = {
-  getAll: () => {
-    // return new Promise( (resolve, reject) => {
-    //   db.all(`SELECT * FROM customers`, (err, direx) => {
-    //     if (err) return reject(err);
-    //     resolve(direx);
-    //   });
-    // });
-  }
-}
+'use strict';
+
+const { getAll, getCheap } = require('../Models/Customers');
+
+module.exports.getCustomers = (req, res, next) => {
+  getAll()
+  .then( (direx) => {
+    res.status(200).json(direx);
+  })
+  .catch( (err) => next(err));
+};
+
+module.exports.getCustomer = ({params: {id}}, res, next) => {
+  // db.get(`SELECT * FROM customers WHERE customer_id = ${id}`, (err, direx) => {
+  //   if (err) return next(err);
+  //   res.status(200).json(direx);
+  // });
+};
+
+module.exports.getCheapCustomer = (req, res, next) => {
+  console.log("get cheap from ctrl");
+  getCheap()
+  .then( (direx) => {
+    res.status(200).json(direx);
+  })
+  .catch( (err) => next(err));
+};
