@@ -21,7 +21,7 @@ module.exports = {
 }
 
 module.exports = {
-  getCheap: () => {
+  getAll: () => {
 		console.log("getCheap");
     // return new Promise( (resolve, reject) => {
 		// 	db.all(`SELECT * FROM customers
