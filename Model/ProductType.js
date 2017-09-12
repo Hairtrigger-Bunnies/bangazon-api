@@ -27,5 +27,6 @@ module.exports = {
         resolve(prodData);
       });
     });
+    console.log('getAll data', getAll);
   }
 };

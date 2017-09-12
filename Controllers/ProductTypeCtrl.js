@@ -9,7 +9,7 @@
 // User should be able to GET a list, and GET a single item.
 
 // seting an object containing getAll to run product types within model folder
-const { getAll } = require('../Model/ProductTypes');
+const { getAll } = require('../Model/ProductType');
 
 // exporting the result of an anonymous function within getProductType while expecting require, response, and next to be passed in
 module.exports.getProductType = (req, res, next) => {
