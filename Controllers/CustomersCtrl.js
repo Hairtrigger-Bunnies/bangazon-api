@@ -6,7 +6,7 @@
 
 'use strict';
 
-const { getAll, getCheap } = require('../Models/Customers');
+const { getAll, getCheap } = require('../Model/Customers');
 
 module.exports.getCustomers = (req, res, next) => {
   getAll()
