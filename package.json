@@ -1,0 +1,26 @@
+{
+  "name": "bangazon-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hairtrigger-Bunnies/bangazon-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hairtrigger-Bunnies/bangazon-api/issues"
+  },
+  "homepage": "https://github.com/Hairtrigger-Bunnies/bangazon-api#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "faker": "^4.1.0",
+    "sqlite3": "^3.1.10"
+  }
+}
