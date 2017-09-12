@@ -9,7 +9,7 @@
 
 'use strict';
 
-const { getAll } = require('../Model/Products');
+const { getAll, getOne } = require('../Model/Products');
 
 module.exports.getProducts = (req, res, next) => {
   getAll()
@@ -20,9 +20,9 @@ module.exports.getProducts = (req, res, next) => {
 };
 
 module.exports.getOneProduct = ({params: {id}}, res, next) => {
-  // req.params.id
-  db.get(`SELECT * FROM products WHERE product_id = ${id}`, (err, products) => {
-    if (err) return next(err);
+  getOne(id)
+  .then( (products) => {
     res.status(200).json(products);
-  });
+  })
+  .catch( (err) => next(err));
 };
