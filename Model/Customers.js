@@ -9,10 +9,8 @@ module.exports = {
         resolve(direx);
       });
     });
-  }
-}
+  },
 
-module.exports = {
   getOne: (id) => {
     return new Promise( (resolve, reject) => {
       db.all(`SELECT first_name, last_name FROM Customers WHERE CustomerID = ${id}`, (err, direx) => {
@@ -22,3 +20,4 @@ module.exports = {
     });
   }
 }
+
