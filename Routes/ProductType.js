@@ -14,12 +14,10 @@ const { Router } = require('express');
 const router = Router();
 
 // sets the object getProductTypes to equal the product types controller
-const { getProductTypes } = require('../Controllers/ProductTypesCtrl');
+const { getProductType } = require('../Controllers/ProductTypeCtrl');
 
 // sets the route for getting all product types
-router.get('/productTypes', getProductTypes);
-// sets the route for getting only one product type
-router.get('./productTypes:id', getOneProductType);
+router.get('/productType', getProductType);
 
 // exports the router so it can be used within the app 
 module.exports = router;
