@@ -13,11 +13,6 @@ const sqlite3 = require('sqlite3').verbose();
 // creates a database that can be accessed within sqlite
 const db = new sqlite3.Database('./db/mediaStore.sqlite');
 
-// const path = require('path')
-// const dbPath = path.resolve(__dirname, 'todo.db')
-// const db = new sqlite3.Database(dbPath)
-
-
 // exports the result of a promse
 module.exports = {
   // sets getAll to equal the result of an anonymous function
