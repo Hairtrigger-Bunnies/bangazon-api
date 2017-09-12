@@ -15,13 +15,15 @@ const db = new sqlite3.Database('./db/mediaStore.sqlite');
 module.exports = {
   getAll: () => {
     return new Promise( (resolve, reject) => {
-      db.all('SELECT * FROM Product_Type', (err, Data) => {
+      db.all(`SELECT * FROM Product_Type`, (err, Data) => {
         if(err) return reject(err);
         resolve(Data);
       });
     });
   },
   getOne: (category) => {
-
+    return new Promise( (resolve, reject) => {
+      db.get(`SELECT Product_Type.*`,)
+    })
   }
-}
+};
