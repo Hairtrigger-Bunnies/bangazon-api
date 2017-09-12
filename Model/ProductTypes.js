@@ -8,47 +8,24 @@
 // DELETE
 // User should be able to GET a list, and GET a single item.
 
-// const sqlite3 = require('sqlite3').verbose();
-// const db = new sqlite3.Database('./db/mediaStore.sqlite');
-
-// module.exports = {
-//   getAll: () => {
-//     return new Promise( (resolve, reject) => {
-//       db.all(`SELECT * FROM shows`, (err, showsData) => {
-//         if(err) return reject(err);
-//         resolve(showsData); 
-//       });
-//     });
-//   },
-//   getOne: (id) => {
-//     return new Promise( (resolve, reject) => {
-//       db.get(`SELECT shows.*, directors.name AS director
-//               FROM shows
-//               JOIN directors ON director_id = directors.dir_id
-//               WHERE show_id = ${id}`, (err, show) => {
-//                 if (err) return reject(err);
-//                 resolve(show);
-//               });
-//     });
-//   }
-// }
-
+// requires in sqlite3 so user can access database
 const sqlite3 = require('sqlite3').verbose();
-
+// creates a database that can be accessed within sqlite
 const db = new sqlite3.Database('./db/mediaStore.sqlite');
 
+// exports the result of a promse
 module.exports = {
+  // sets getAll to equal the result of an anonymous function
   getAll: () => {
+    // returns a new promise that will either resolve or reject
     return new Promise( (resolve, reject) => {
+      // runs the method all on the variable db and selects all data within the db. Then executes an anonymous function that either returns an error or the data
       db.all(`SELECT * FROM Product_Types`, (err, Data) => {
+        // if there's an error, it rejects and displays an error within the console
         if(err) return reject(err);
+        // if no error, it resolves and returns the data
         resolve(Data);
       });
     });
-  },
-  getOne: (id) => {
-    return new Promise( (resolve, reject) => {
-      db.get(`SELECT Product_Types.*`,)
-    })
   }
 };
