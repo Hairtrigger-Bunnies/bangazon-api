@@ -6,4 +6,3 @@
 // PUT
 // DELETE
 // User should be able to GET a list of products, and GET a single product.
-
