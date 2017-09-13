@@ -1,18 +1,9 @@
 "use strict";
 
-//task 4- Regan- Allow developers to access Payment Type resource
-// Verbs to be supported
+const { getAllPaymentTypes, getSinglePaymentType } = require("../Model/PaymentTypes");
 
-// GET
-// POST
-// PUT
-// DELETE
-// User should be able to GET a list of products, and GET a single product.
-
-const { getAll, getOne } = require("../Model/PaymentTypes");
-
-module.exports.getPaymentType = (req, res, next) => {
-  getAll()
+module.exports.getPaymentTypes = (req, res, next) => {
+  getAllPaymentTypes()
     .then(Datas => {
       res.status(200).json(Datas);
     })
@@ -22,7 +13,7 @@ module.exports.getPaymentType = (req, res, next) => {
 };
 
 module.exports.getOnePaymentType = ({ params: { id } }, res, next) => {
-  getOne(id)
+  getSinglePaymentType(id)
     .then(Data => {
       res.status(200).json(Data);
     })
