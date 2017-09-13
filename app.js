@@ -1,6 +1,6 @@
 let express = require('express');
-
 let app = express();
+require('dotenv').config();
 
 // middleware
 const middleware = (req, res, next) => {

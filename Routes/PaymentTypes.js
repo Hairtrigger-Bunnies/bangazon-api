@@ -2,13 +2,9 @@
 
 const { Router } = require("express");
 const router = Router();
+const { getPaymentTypes, getOnePaymentType } = require("../Controllers/PaymentTypeCtrl");
 
-const {
-  getPaymentType,
-  getOnePaymentType
-} = require("../Controllers/PaymentTypeCtrl");
-
-router.get("/PaymentTypes", getPaymentType);
+router.get("/PaymentTypes", getPaymentTypes);
 router.get("/PaymentTypes/:id", getOnePaymentType);
 
 module.exports = router;

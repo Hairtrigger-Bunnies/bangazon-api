@@ -6,26 +6,27 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/bangazoncorp.sqlite');
 
 // exports the result of a promse
-const getAll = () => {
+const getAllProductTypes = () => {
   // returns a new promise that will either resolve or reject
   return new Promise( (resolve, reject) => {
     // runs the method all on the variable db and selects all data within the db. Then it makes the data available to be executed in the controller
-    db.all(`SELECT * FROM Product_Types`, (err, direx) => {
+    db.all(`SELECT * FROM Product_Types`, (err, data) => {
       // if there's an error, it rejects and displays an error within the console
       if(err) return reject(err);
       // if no error, it resolves and returns the data
-      resolve(direx);
+      resolve(data);
     });
   });
 };
 
-const getOne = (id) => {
+const getSingleProductType = (id) => {
   return new Promise( (resolve, reject) => {
-    db.get(`SELECT * FROM Product_Types WHERE ProductTypeID = ${id}`, (err, direx) => {
+    db.get(`SELECT * FROM Product_Types 
+            WHERE ProductTypeID = ${id}`, (err, data) => {
       if(err) return reject(err);
-      resolve(direx);
+      resolve(data);
     });
   });
 };
 
-module.exports = { getAll, getOne };
+module.exports = { getAllProductTypes, getSingleProductType };
