@@ -1,4 +1,3 @@
-//task 3- Humphrey- Allow developers to access Product resource
 // Verbs to be supported
 
 // GET

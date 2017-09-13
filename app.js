@@ -9,7 +9,8 @@ const middleware = (req, res, next) => {
 //Tells the app to go through the middleware before launching routes
 app.use(middleware);
 
-let routes = require("./Routes/");
+let routes = require('./Routes/');
+
 app.use(`/bangazon-api/`, routes);
 
 app.use((req, res, next) => {
@@ -26,7 +27,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-let port = process.env.PORT || 3000;
+let port = process.env.port || 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
