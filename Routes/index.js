@@ -3,11 +3,11 @@
 const { Router } = require('express');
 const router = Router();
 
-router.use(require('./ProductType'));
+router.use(require('./ProductTypes'));
 
 router.get('/', (req, res) => {
   res.json({
-    "Product Type": "/bangazon-api/ProductType"
+    "ProductTypes": "/bangazon-api/ProductTypes"
   });
 });
 
