@@ -10,6 +10,8 @@ const middleware = (req, res, next) => {
 //Tells the app to go through the middleware before launching routes
 app.use(middleware);
 
+//body parser here
+
 let routes = require('./Routes/');
 app.use(`/bangazon-api/`, routes);
 
