@@ -3,23 +3,13 @@
 const { Router } = require('express');
 const router = Router();
 
-router.use(require('./ProductType'));
+router.use(require('./Products'));
 
 router.get('/', (req, res) => {
   res.json({
-    "product types": "bangazon/productType"
+    "Products": "bangazon/Products"
   });
 });
 
-// 'use strict';
- 
-// const { Router } = require('express');
-// const router = Router();
+module.exports = router;
 
-// router.use(require('./customers'));
-
-// router.get('/', (req, res) => {
-//   res.json({
-//     "customers": "bangazon/customer"
-//   });
-// });
