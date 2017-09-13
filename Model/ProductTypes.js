@@ -21,7 +21,7 @@ const getAll = () => {
 
 const getOne = (id) => {
   return new Promise( (resolve, reject) => {
-    db.all(`SELECT * FROM Product_Types WHERE ProductTypeID = ${id}`, (err, direx) => {
+    db.get(`SELECT * FROM Product_Types WHERE ProductTypeID = ${id}`, (err, direx) => {
       if(err) return reject(err);
       resolve(direx);
     });
