@@ -8,26 +8,38 @@
 
 const { getAll, getOne, getCheap } = require('../Model/Customers');
 
+// module.exports.getCustomers = (req, res, next) => {
+//   if(req.query.active = false){
+//     getCheap();
+//     console.log("false from ctrl");
+//   }
+//   else{
+//     getAll()
+//     .then( (direx) => {
+//       console.log(req.query.active);
+//       res.status(200).json(direx);
+//     })
+//     .catch( (err) => next(err));
+//   }
+// };
+
 module.exports.getCustomers = (req, res, next) => {
+  console.log(req.query.active)
   getAll()
   .then( (direx) => {
-    console.log(req.query.active);
-    res.status(200).json(direx);
+    if(req.query.active === false){
+      getCheap()
+      console.log("get cheap from ctrl");
+    }
+    else{
+      console.log("hello crtl");
+    }
   })
   .catch( (err) => next(err));
 };
 
 module.exports.getCustomer = ({params: {id}}, res, next) => {
   getOne(id)
-  .then( (direx) => {
-    res.status(200).json(direx);
-  })
-  .catch( (err) => next(err));
-};
-
-module.exports.getCheapCustomer = (req, res, next) => {
-  console.log("get cheaper ctl");
-  getCheap()
   .then( (direx) => {
     res.status(200).json(direx);
   })
