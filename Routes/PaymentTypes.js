@@ -8,7 +8,7 @@ const {
   getOnePaymentType
 } = require("../Controllers/PaymentTypeCtrl");
 
-router.get("/PaymentType", getPaymentType);
-router.get("/PaymentType/:id", getOnePaymentType);
+router.get("/PaymentTypes", getPaymentType);
+router.get("/PaymentTypes/:id", getOnePaymentType);
 
 module.exports = router;

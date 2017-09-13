@@ -9,7 +9,7 @@
 // DELETE
 // User should be able to GET a list of products, and GET a single product.
 
-const { getAll, getOne } = require("../Model/PaymentType");
+const { getAll, getOne } = require("../Model/PaymentTypes");
 
 module.exports.getPaymentType = (req, res, next) => {
   getAll()

@@ -12,25 +12,24 @@
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("./db/bangazoncorp.sqlite");
 
-module.exports = {
-  getAll: () => {
+const getAll = () => {
     return new Promise((resolve, reject) => {
       db.all(`SELECT * FROM Payment_Types`, (err, Datas) => {
         if (err) return reject(err);
         resolve(Datas);
       });
     });
-  },
+  };
 
-  getOne: id => {
+const getOne = (id) => {
     return new Promise((resolve, reject) => {
       db.all(
-        `SELECT customer_id, account_number FROM PaymentTypes WHERE PaymentTypeID = ${id}`,
+        `SELECT * FROM Payment_Types WHERE PaymentTypeID = ${id}`,
         (err, Data) => {
           if (err) return reject(err);
           resolve(Data);
-        }
-      );
+        });
     });
-  }
 };
+
+module.exports = { getAll, getOne };
