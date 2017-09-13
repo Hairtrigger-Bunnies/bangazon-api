@@ -13,8 +13,8 @@ const { getAll, getOne } = require('../Model/Products');
 
 module.exports.getProducts = (req, res, next) => {
   getAll()
-  .then( (products) => {
-    res.status(200).json(products);
+  .then( (direx) => {
+    res.status(200).json(direx);
   })
   .catch( (err) => next(err));
 };

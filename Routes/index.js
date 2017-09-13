@@ -8,8 +8,8 @@ router.use(require('./Customers'));
 
 router.get('/', (req, res) => {
   res.json({
-    "Products": "bangazon/Products"
-    "customers": "bangazon/Customer"
+    "Products": "bangazon-api/Products",
+    "Customers": "bangazon-api/Customers"
   });
 });
 

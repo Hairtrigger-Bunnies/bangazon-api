@@ -1,5 +1,8 @@
 .node_modules
 .env
 /**/node_modules
+<<<<<<< HEAD
+=======
 .DS_STORE
 /**/node_modules
+>>>>>>> 19f7256f3734301c97e957c509ff8ff024b94012

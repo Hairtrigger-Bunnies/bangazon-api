@@ -18,6 +18,18 @@ module.exports = {
         resolve(direx);
       });
     });
+  },
+
+  getCheap: () => {
+		console.log("getCheap");
+    return new Promise( (resolve, reject) => {
+			db.all(`SELECT * FROM customers
+			JOIN orders
+			WHERE customer.customerId != orders.customerId`, (err, direx) => {
+      	if (err) return reject(err);
+        resolve(direx);
+      });
+  	});
   }
 }
 
