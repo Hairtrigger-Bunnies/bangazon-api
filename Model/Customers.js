@@ -3,6 +3,7 @@ const db = new sqlite3.Database('./db/bangazoncorp.sqlite');
 
 module.exports = {
   getAll: () => {
+    console.log("get all cust");
     return new Promise( (resolve, reject) => {
       db.all(`SELECT * FROM customers`, (err, direx) => {
         if (err) return reject(err);
@@ -23,9 +24,9 @@ module.exports = {
   getCheap: () => {
 		console.log("getCheap");
     return new Promise( (resolve, reject) => {
-			db.all(`SELECT * FROM customers
-			JOIN orders
-			WHERE customer.customerId != orders.customerId`, (err, direx) => {
+			db.all(`SELECT first_name, last_name FROM Customers
+			JOIN Payment_Types
+			WHERE Customers.customerID = Payment_Types.customer_id`, (err, direx) => {
       	if (err) return reject(err);
         resolve(direx);
       });

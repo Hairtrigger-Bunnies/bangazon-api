@@ -7,10 +7,9 @@
 const { Router } = require('express');
 const router = Router();
 
-const { getCustomers, getCustomer, getCheapCustomer } = require('../Controllers/CustomersCtrl');
+const { getCustomers, getCustomer } = require('../Controllers/CustomersCtrl');
 
 router.get('/customers', getCustomers);
 router.get('/customers/:id', getCustomer);
-router.get('/customers/?active=false', getCheapCustomer);
 
 module.exports = router;

@@ -6,11 +6,12 @@
 
 'use strict';
 
-const { getAll, getCheap } = require('../Model/Customers');
+const { getAll, getOne, getCheap } = require('../Model/Customers');
 
 module.exports.getCustomers = (req, res, next) => {
   getAll()
   .then( (direx) => {
+    console.log(req.query.active);
     res.status(200).json(direx);
   })
   .catch( (err) => next(err));
@@ -25,6 +26,7 @@ module.exports.getCustomer = ({params: {id}}, res, next) => {
 };
 
 module.exports.getCheapCustomer = (req, res, next) => {
+  console.log("get cheaper ctl");
   getCheap()
   .then( (direx) => {
     res.status(200).json(direx);
