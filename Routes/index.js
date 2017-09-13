@@ -7,7 +7,7 @@ router.use(require('./Orders'));
 router.use(require('./Products'));
 router.use(require('./Customers'));
 router.use(require('./ProductTypes'));
-router.use(require('./PaymentType'));
+router.use(require('./PaymentTypes'));
 
 router.get('/', (req, res) => {
     //provide endpoints
