@@ -1,35 +1,35 @@
-//task 12- JT & AH Tuesday Sept 12
-// Display Customers that haven't placed an Order #12
-// By using the URL parameter /customers/?active=false, 
-// the JSON response should only contain customers that don't 
-// have any orders placed yet.
-
-'use strict';
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/mediaStore.sqlite');
+const db = new sqlite3.Database('./db/bangazoncorp.sqlite');
 
 module.exports = {
   getAll: () => {
-		console.log("getAll");
-    // return new Promise( (resolve, reject) => {
-    //   db.all(`SELECT * FROM customers`, (err, direx) => {
-    //     if (err) return reject(err);
-    //     resolve(direx);
-    //   });
-    // });
-  }
-}
+    return new Promise( (resolve, reject) => {
+      db.all(`SELECT * FROM customers`, (err, direx) => {
+        if (err) return reject(err);
+        resolve(direx);
+      });
+    });
+  },
 
-module.exports = {
-  getAll: () => {
+  getOne: (id) => {
+    return new Promise( (resolve, reject) => {
+      db.all(`SELECT first_name, last_name FROM Customers WHERE CustomerID = ${id}`, (err, direx) => {
+        if (err) return reject(err);
+        resolve(direx);
+      });
+    });
+  },
+
+  getCheap: () => {
 		console.log("getCheap");
-    // return new Promise( (resolve, reject) => {
-		// 	db.all(`SELECT * FROM customers
-		// 	JOIN orders
-		// 	WHERE customer.customerId != orders.customerId`, (err, direx) => {
-    //   	if (err) return reject(err);
-    //     resolve(direx);
-    //   });
-  	// });
+    return new Promise( (resolve, reject) => {
+			db.all(`SELECT * FROM customers
+			JOIN orders
+			WHERE customer.customerId != orders.customerId`, (err, direx) => {
+      	if (err) return reject(err);
+        resolve(direx);
+      });
+  	});
   }
 }
+

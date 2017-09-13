@@ -3,7 +3,6 @@ let app = express();
 
 // middleware
 const middleware = (req, res, next) => {
-  console.log("I am middleware!");
   next();
 };
 
