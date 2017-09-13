@@ -1,5 +1,5 @@
 {
-    "product_types": [
+    "product_type": [
       {"name": "tools"},
       {"name": "electronics"},
       {"name": "automotive"},
