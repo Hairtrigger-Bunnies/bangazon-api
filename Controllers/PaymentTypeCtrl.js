@@ -3,7 +3,9 @@
 const {
   getAllPaymentTypes,
   getSinglePaymentType,
-  addNewPaymentType
+  addNewPaymentType,
+  editNewPaymentType,
+  deleteSinglePaymentType
 } = require("../Model/PaymentTypes");
 
 module.exports.getPaymentTypes = (req, res, next) => {
@@ -26,6 +28,22 @@ module.exports.getOnePaymentType = ({ params: { id } }, res, next) => {
 
 module.exports.addPaymentType = (req, res, next) => {
   addNewPaymentType(req.body)
+    .then(Data => {
+      res.status(200).json(Data);
+    })
+    .catch(err => next(err));
+};
+
+module.exports.editPaymentType = (req, res, next) => {
+  editNewPaymentType(req.body, req.params.id)
+    .then(Data => {
+      res.status(200).json(Data);
+    })
+    .catch(err => next(err));
+};
+
+module.exports.deletePaymentType = ({ params: { id } }, res, next) => {
+  deleteSinglePaymentType(id)
     .then(Data => {
       res.status(200).json(Data);
     })

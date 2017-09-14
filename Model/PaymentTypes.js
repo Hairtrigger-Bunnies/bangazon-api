@@ -40,8 +40,39 @@ const addNewPaymentType = body => {
   });
 };
 
+const editNewPaymentType = (body, id) => {
+  console.log("body", body);
+  console.log("id", id);
+  return new Promise((resolve, reject) => {
+    db.run(
+      `UPDATE Payment_Types SET 
+        payment_type = '${body.payment_type}', 
+        account_number = '${body.account_number}', 
+        customer_id = '${body.customer_id}' WHERE PaymentTypeID = '${id}'`,
+      (err, Data) => {
+        if (err) return reject(err);
+        resolve(Data);
+      }
+    );
+  });
+};
+
+const deleteSinglePaymentType = id => {
+  return new Promise((resolve, reject) => {
+    db.run(
+      `DELETE FROM Payment_Types WHERE PaymentTypeID = ${id}`,
+      (err, Datas) => {
+        if (err) return reject(err);
+        resolve(Datas);
+      }
+    );
+  });
+};
+
 module.exports = {
   getAllPaymentTypes,
   getSinglePaymentType,
-  addNewPaymentType
+  addNewPaymentType,
+  editNewPaymentType,
+  deleteSinglePaymentType
 };
