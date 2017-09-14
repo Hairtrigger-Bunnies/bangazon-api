@@ -4,8 +4,8 @@ const { Router } = require('express');
 const router = Router();
 const { getCustomers, getOneCustomer } = require('../Controllers/CustomersCtrl');
 
-router.get('/Customers', getCustomers);
-router.get('/Customers/:id', getOneCustomer);
+router.get('/customers', getCustomers);
+router.get('/customers/:id', getOneCustomer);
 //router.post...
 //router.put...
 

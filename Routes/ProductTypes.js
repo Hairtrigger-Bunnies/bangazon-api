@@ -8,8 +8,8 @@ const router = Router();
 const { getProductTypes, getOneProductType } = require('../Controllers/ProductTypesCtrl');
 
 // sets the route for getting all product types
-router.get('/ProductTypes', getProductTypes);
-router.get('/ProductTypes/:id', getOneProductType);
+router.get('/productTypes', getProductTypes);
+router.get('/productTypes/:id', getOneProductType);
 
 // exports the router so it can be used within the app 
 module.exports = router;
