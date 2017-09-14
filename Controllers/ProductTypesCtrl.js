@@ -27,8 +27,8 @@ module.exports.getOneProductType = ({params: {id}}, res, next) => {
 
 module.exports.addProductType = (req, res, next) => {
   addNewProductType(req.body)
-  .then(Data => {
-    res.sttus(200).json(Data);
+  .then(data => {
+    res.status(200).json(data);
   })
-  .catch( err => nect(err));
+  .catch( err => next(err));
 };
