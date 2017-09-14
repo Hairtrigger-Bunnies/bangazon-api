@@ -15,4 +15,5 @@ router.get("/PaymentTypes/:id", getOnePaymentType);
 router.post("/PaymentTypes", addPaymentType);
 router.put("/PaymentTypes/:id", editPaymentType);
 router.delete("/PaymentTypes/:id", deletePaymentType);
+
 module.exports = router;
