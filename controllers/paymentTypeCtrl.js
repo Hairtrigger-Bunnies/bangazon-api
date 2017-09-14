@@ -6,7 +6,7 @@ const {
   addNewPaymentType,
   editNewPaymentType,
   deleteSinglePaymentType
-} = require("../Model/PaymentTypes");
+} = require("../models/PaymentTypes");
 
 module.exports.getPaymentTypes = (req, res, next) => {
   getAllPaymentTypes()
