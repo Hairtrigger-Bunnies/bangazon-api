@@ -25,7 +25,6 @@ const getSinglePaymentType = id => {
 };
 
 const addNewPaymentType = body => {
-  console.log("body", body);
   return new Promise((resolve, reject) => {
     db.run(
       `INSERT INTO Payment_Types (payment_type, account_number, customer_id) VALUES (
