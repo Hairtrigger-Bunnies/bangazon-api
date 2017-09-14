@@ -1,6 +1,6 @@
 "use strict";
 
-const { getAllPaymentTypes, getSinglePaymentType } = require("../Model/PaymentTypes");
+const { getAllPaymentTypes, getSinglePaymentType } = require("../models/PaymentTypes");
 
 module.exports.getPaymentTypes = (req, res, next) => {
   getAllPaymentTypes()

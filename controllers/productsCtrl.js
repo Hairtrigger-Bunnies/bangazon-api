@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllProducts, getSingleProduct, postOneProduct } = require('../Model/Products');
+const { getAllProducts, getSingleProduct, postOneProduct } = require('../models/Products');
 
 module.exports.getProducts = (req, res, next) => {
   getAllProducts()

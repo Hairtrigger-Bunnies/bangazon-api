@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllCustomers, getSingleCustomer } = require('../Model/Customers');
+const { getAllCustomers, getSingleCustomer } = require('../models/Customers');
 
 module.exports.getCustomers = (req, res, next) => {
   getAllCustomers()

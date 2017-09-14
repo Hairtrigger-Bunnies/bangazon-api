@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let routes = require('./Routes/');
+let routes = require('./routes/');
 app.use(`/bangazon-api/`, routes);
 
 app.use( (req, res, next) => {
