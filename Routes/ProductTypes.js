@@ -11,5 +11,6 @@ const { getProductTypes, getOneProductType } = require('../Controllers/ProductTy
 router.get('/ProductTypes', getProductTypes);
 router.get('/ProductTypes/:id', getOneProductType);
 
+
 // exports the router so it can be used within the app 
 module.exports = router;
