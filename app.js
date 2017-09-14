@@ -7,6 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 let routes = require("./Routes/");
+
 app.use(`/bangazon-api/`, routes);
 
 app.use((req, res, next) => {
