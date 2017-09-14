@@ -13,5 +13,6 @@ router.get("/productTypes/:id", getOneProductType);
 router.post("/productTypes", addProductType);
 router.put("/productTypes/:id", editProductType);
 router.delete("/productTypes/:id", deleteProductType);
+
 // exports the router so it can be used within the app 
 module.exports = router;
