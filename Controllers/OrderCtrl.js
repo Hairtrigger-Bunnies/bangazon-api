@@ -2,19 +2,19 @@
 
 const { getAllOrders, getSingleOrder, addSingleOrder, editSingleOrder, deleteSingleOrder } = require('../Model/orders');
 
-
 module.exports.getOrders = (req, res, next) => {
-	getAllOrders()
-  .then( (orders) => {
-    res.status(200).json(orders);    
-  })
-  .catch( (err) => {
-    next(err);
-  });
+  getAllOrders()
+    .then(orders => {
+      res.status(200).json(orders);
+    })
+    .catch(err => {
+      next(err);
+    });
 };
 
-module.exports.getOneOrder = ({params: {id}}, res, next) => {
+module.exports.getOneOrder = ({ params: { id } }, res, next) => {
   getSingleOrder(id)
+
   .then( (single) => {
     res.status(200).json(single);
   })
@@ -53,3 +53,4 @@ module.exports.deleteOrder = ({params: {id}}, res, next) => {
 		next(err);
 	});
 };
+
