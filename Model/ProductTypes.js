@@ -29,4 +29,15 @@ const getSingleProductType = (id) => {
   });
 };
 
-module.exports = { getAllProductTypes, getSingleProductType };
+const addNewProductType = () => {
+  return new Promise( (resolve, reject) => {
+    db.run(`INSERT INTO Product_Types VALUES(null, '${}', '${}')`), (err, ) => {
+      if(err) return reject(err);
+      resolve();
+    };
+  });
+};
+
+
+
+module.exports = { getAllProductTypes, getSingleProductType, addNewProductType };
