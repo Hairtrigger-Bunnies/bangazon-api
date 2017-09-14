@@ -35,15 +35,10 @@ const getSingleProductType = (id) => {
 const addNewProductType = (body) => {
   console.log("body", body);
   return new Promise( (resolve, reject) => {
-    db.run(
-      `INSERT INTO Product_Types (ProductTypeID, name) VALUES (
-      '${body.ProductTypeID}', 
-      '${body.name}')`,
-      (err, data) => {
-        if(err) return reject(err);
-        resolve(data);
-      }
-    );
+    db.run(`INSERT INTO Product_Types (ProductTypeID, name) VALUES ('${body.ProductTypeID}', '${body.name}')`, (err, data) => {
+      if(err) return reject(err);
+      resolve(data);
+    });
   });
 };
 
