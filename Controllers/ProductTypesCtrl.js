@@ -31,9 +31,7 @@ module.exports.addProductType = (req, res, next) => {
   .then( (data) => {
     res.status(200).json(data);
   })
-  .catch( (err) => {
-    next(err)
-  });
+  .catch( (err) => next(err));
 };
 
 module.exports.editProductType = (req, res, next) => {
@@ -41,5 +39,5 @@ module.exports.editProductType = (req, res, next) => {
   .then( (Data) => {
     res.status(200).json(Data);
   })
-  .catch( (err) => { next(err)});
+  .catch( (err) => next(err));
 };
