@@ -23,4 +23,58 @@ const getSingleCustomer = (id) => {
   });
 };
 
-module.exports = { getAllCustomers, getSingleCustomer };
+const postSingleCustomer = (body) => {
+  return new Promise( (resolve, reject) => {
+    db.run(`INSERT INTO Customers (first_name, last_name, creation_date, active, last_login, email, address, phone_number) VALUES (
+      '${body.first_name}', 
+      '${body.last_name}', 
+      '${body.creation_date}',
+      '${body.active}',
+      '${body.last_login}',
+      '${body.email}',
+      '${body.address}',
+      '${body.phone_number}')`, (err, data) => {
+      if (err) {
+        console.log("error", err);
+        return reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
+const putSingleCustomer = (body) => {
+  return new Promise( (resolve, reject) => {
+    db.run(`UPDATE Customers 
+            SET first_name = '${body.first_name}', 
+                last_name = '${body.last_name}', 
+                creation_date = '${body.creation_date}', 
+                active = '${body.active}', 
+                last_login = '${body.last_login}', 
+                email = '${body.email}', 
+                address = '${body.address}', 
+                phone_number = '${body.phone_number}'
+            WHERE CustomerID = '${id}'`, (err, data) => {
+      if (err) {
+        console.log("error", err);
+        return reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
+const deleteSingleCustomer = (id) => {
+  return new Promise( (resolve, reject) => {
+    db.run(`DELETE FROM Customers 
+            WHERE CustomerID = '${id}'`, (err, data) => {
+      if (err) {
+        console.log("error", err);
+        return reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
+module.exports = { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer };
