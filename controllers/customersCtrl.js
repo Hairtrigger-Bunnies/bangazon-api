@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer } = require('../Model/Customers');
+const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer } = require('../models/Customers');
 
 module.exports.getCustomers = (req, res, next) => {
   getAllCustomers()
