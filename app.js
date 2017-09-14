@@ -3,15 +3,8 @@ let app = express();
 let bodyParser = require('body-parser');
 require('dotenv').config();
 
-// middleware
-const middleware = (req, res, next) => {
-  next();
-};
-
-//Tells the app to go through the middleware before launching routes
-app.use(middleware);
-
-//body parser here
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json);
 
 let routes = require('./Routes/');
 app.use(`/bangazon-api/`, routes);

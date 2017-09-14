@@ -24,3 +24,10 @@ module.exports.getOneProductType = ({params: {id}}, res, next) => {
   })
   .catch( (err) => next(err));
 };
+
+module.exports.addNewProductType = (req, res, next) => {
+  addNewProductType(req.body).then(Data => {
+    res.sttus(200).json(Data);
+  })
+  .catch( err => nect(err));
+};

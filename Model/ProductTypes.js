@@ -5,6 +5,7 @@ const sqlite3 = require('sqlite3').verbose();
 // creates a database that can be accessed within sqlite
 const db = new sqlite3.Database('./db/bangazoncorp.sqlite');
 
+//get
 // exports the result of a promse
 const getAllProductTypes = () => {
   // returns a new promise that will either resolve or reject
@@ -19,6 +20,7 @@ const getAllProductTypes = () => {
   });
 };
 
+// GET
 const getSingleProductType = (id) => {
   return new Promise( (resolve, reject) => {
     db.get(`SELECT * FROM Product_Types 
@@ -29,15 +31,18 @@ const getSingleProductType = (id) => {
   });
 };
 
-const addNewProductType = () => {
+// POST
+const addNewProductType = (body) => {
   return new Promise( (resolve, reject) => {
-    db.run(`INSERT INTO Product_Types VALUES(null, '${}', '${}')`), (err, ) => {
+    db.run(`INSERT INTO Product_Types (ProductTypeID, name) VALUES (null, '${body.ProductTypeID}', '${body.name}')`, (err, data) => {
       if(err) return reject(err);
-      resolve();
-    };
+      resolve(data);
+    });
   });
 };
 
+// PUT
 
+// DELETE
 
 module.exports = { getAllProductTypes, getSingleProductType, addNewProductType };
