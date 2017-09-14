@@ -1,7 +1,7 @@
 'use strict';
 
 // seting an object containing getAll to run product types within model folder
-const { getAllProductTypes, getSingleProductType } = require('../Model/ProductTypes');
+const { getAllProductTypes, getSingleProductType, addNewProductType } = require('../Model/ProductTypes');
 
 // exporting the result of an anonymous function within getProductType while expecting require, response, and next to be passed in
 module.exports.getProductTypes = (req, res, next) => {
@@ -25,8 +25,9 @@ module.exports.getOneProductType = ({params: {id}}, res, next) => {
   .catch( (err) => next(err));
 };
 
-module.exports.addNewProductType = (req, res, next) => {
-  addNewProductType(req.body).then(Data => {
+module.exports.addProductType = (req, res, next) => {
+  addNewProductType(req.body)
+  .then(Data => {
     res.sttus(200).json(Data);
   })
   .catch( err => nect(err));
