@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllOrders, getSingleOrder } = require('../Model/orders');
+const { getAllOrders, getSingleOrder } = require('../Model/Orders');
 
 
 module.exports.getOrders = (req, res, next) => {
