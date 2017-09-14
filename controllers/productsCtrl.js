@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllProducts, getSingleProduct, postOneProduct } = require('../models/Products');
+const { getAllProducts, getSingleProduct } = require('../models/Products');
 
 module.exports.getProducts = (req, res, next) => {
   getAllProducts()
@@ -18,12 +18,4 @@ module.exports.getOneProduct = ({params: {id}}, res, next) => {
   .catch( (err) => next(err));
 };
 
-module.exports.postNewProduct = (req, res, next) => {
-  console.log("post new product ctrl passing in body", req.body);
-  postOneProduct(req.body)
-  .then( (products) => {
-    res.status(200).json(products);
-  })
-  .catch( (err) => next(err));
-};
 
