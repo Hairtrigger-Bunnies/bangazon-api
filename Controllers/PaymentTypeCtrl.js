@@ -1,6 +1,10 @@
 "use strict";
 
-const { getAllPaymentTypes, getSinglePaymentType } = require("../Model/PaymentTypes");
+const {
+  getAllPaymentTypes,
+  getSinglePaymentType,
+  addNewPaymentType
+} = require("../Model/PaymentTypes");
 
 module.exports.getPaymentTypes = (req, res, next) => {
   getAllPaymentTypes()
@@ -14,6 +18,14 @@ module.exports.getPaymentTypes = (req, res, next) => {
 
 module.exports.getOnePaymentType = ({ params: { id } }, res, next) => {
   getSinglePaymentType(id)
+    .then(Data => {
+      res.status(200).json(Data);
+    })
+    .catch(err => next(err));
+};
+
+module.exports.addPaymentType = (req, res, next) => {
+  addNewPaymentType(req.body)
     .then(Data => {
       res.status(200).json(Data);
     })

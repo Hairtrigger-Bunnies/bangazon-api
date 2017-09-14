@@ -1,24 +1,23 @@
-'use strict';
+"use strict";
 
-const { getAllOrders, getSingleOrder } = require('../Model/orders');
-
+const { getAllOrders, getSingleOrder } = require("../Model/Orders");
 
 module.exports.getOrders = (req, res, next) => {
-	getAllOrders()
-  .then( (orders) => {
-    res.status(200).json(orders);    
-  })
-  .catch( (err) => {
-    next(err);
-  });
+  getAllOrders()
+    .then(orders => {
+      res.status(200).json(orders);
+    })
+    .catch(err => {
+      next(err);
+    });
 };
 
-module.exports.getOneOrder = ({params: {id}}, res, next) => {
+module.exports.getOneOrder = ({ params: { id } }, res, next) => {
   getSingleOrder(id)
-  .then( (single) => {
-    res.status(200).json(single);
-  })
-  .catch( (err) => {
-    next(err);
-  });
+    .then(single => {
+      res.status(200).json(single);
+    })
+    .catch(err => {
+      next(err);
+    });
 };
