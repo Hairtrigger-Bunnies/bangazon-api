@@ -11,6 +11,6 @@ const { getProductTypes, getOneProductType, addProductType } = require("../Contr
 router.get("/productTypes", getProductTypes);
 router.get("/productTypes/:id", getOneProductType);
 router.post("/productTypes", addProductType);
-
+router.put("/productTypes/:id", editProductType);
 // exports the router so it can be used within the app 
 module.exports = router;

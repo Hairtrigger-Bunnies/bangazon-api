@@ -1,7 +1,7 @@
 'use strict';
 
 // seting an object containing getAll to run product types within model folder
-const { getAllProductTypes, getSingleProductType, addNewProductType } = require('../Model/ProductTypes');
+const { getAllProductTypes, getSingleProductType, addNewProductType, editNewProductType } = require('../Model/ProductTypes');
 
 
 // exporting the result of an anonymous function within getProductType while expecting require, response, and next to be passed in
@@ -34,4 +34,12 @@ module.exports.addProductType = (req, res, next) => {
   .catch( (err) => {
     next(err)
   });
+};
+
+module.exports.editProductType = (req, res, next) => {
+  editNewProductType(req.body, req.params.id)
+  .then( (Data) => {
+    res.status(200).json(Data);
+  })
+  .catch( (err) => { next(err)});
 };

@@ -34,7 +34,7 @@ const getSingleProductType = (id) => {
 // POST
 const addNewProductType = (body) => {
   return new Promise( (resolve, reject) => {
-    db.run(`INSERT INTO Product_Types (ProductTypeID, name) VALUES ('${body.ProductTypeID}', '${body.name}')`, (err, data) => {
+    db.run(`INSERT INTO Product_Types (name) VALUES ('${body.name}')`, (err, data) => {
       if(err) return reject(err);
       resolve(data);
     });
@@ -42,7 +42,19 @@ const addNewProductType = (body) => {
 };
 
 // PUT
+const editNewProductType = (body, id) => {
+  return new Promise( (resolve, reject) => {
+    db.run(
+      `UPDATE Product_Types SET
+      name = '${body.name}' WHERE ProductTypeID = '${id}'`,
+      (err, Data) => {
+        if(err) return reject(err);
+        resolve(Data);
+      }
+    );
+  });
+};
 
 // DELETE
 
-module.exports = { getAllProductTypes, getSingleProductType, addNewProductType };
+module.exports = { getAllProductTypes, getSingleProductType, addNewProductType, editNewProductType };
