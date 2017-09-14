@@ -1,5 +1,4 @@
 let express = require("express");
-
 let app = express();
 require("dotenv").config();
 
@@ -8,6 +7,8 @@ const middleware = (req, res, next) => {
 };
 
 app.use(middleware);
+
+//body parser here
 
 let routes = require("./Routes/");
 app.use(`/bangazon-api/`, routes);

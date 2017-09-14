@@ -1,18 +1,9 @@
-//task 3- Humphrey- Allow developers to access Product resource
-// Verbs to be supported
-
-// GET
-// POST
-// PUT
-// DELETE
-// User should be able to GET a list of products, and GET a single product.
-
 'use strict';
 
-const { getAll, getOne } = require('../Model/Products');
+const { getAllProducts, getSingleProduct } = require('../Model/Products');
 
 module.exports.getProducts = (req, res, next) => {
-  getAll()
+  getAllProducts()
   .then( (products) => {
     res.status(200).json(products);
   })
@@ -20,7 +11,7 @@ module.exports.getProducts = (req, res, next) => {
 };
 
 module.exports.getOneProduct = ({params: {id}}, res, next) => {
-  getOne(id)
+  getSingleProduct(id)
   .then( (products) => {
     res.status(200).json(products);
   })
