@@ -5,16 +5,11 @@ const sqlite3 = require('sqlite3').verbose();
 // creates a database that can be accessed within sqlite
 const db = new sqlite3.Database('./db/bangazoncorp.sqlite');
 
-//get
-// exports the result of a promse
+// GET
 const getAllProductTypes = () => {
-  // returns a new promise that will either resolve or reject
   return new Promise( (resolve, reject) => {
-    // runs the method all on the variable db and selects all data within the db. Then it makes the data available to be executed in the controller
     db.all(`SELECT * FROM Product_Types`, (err, data) => {
-      // if there's an error, it rejects and displays an error within the console
       if(err) return reject(err);
-      // if no error, it resolves and returns the data
       resolve(data);
     });
   });
@@ -47,14 +42,24 @@ const editNewProductType = (body, id) => {
     db.run(
       `UPDATE Product_Types SET
       name = '${body.name}' WHERE ProductTypeID = '${id}'`,
-      (err, Data) => {
+      (err, data) => {
         if(err) return reject(err);
-        resolve(Data);
+        resolve(data);
       }
     );
   });
 };
 
 // DELETE
-
-module.exports = { getAllProductTypes, getSingleProductType, addNewProductType, editNewProductType };
+const deleteSingleProductType = (id) => {
+  return new Promise( (resolve, reject) => {
+    db.run(
+      `DELETE FROM Product_Types WHERE ProductTypeID = ${id}`,
+      (err, data) => {
+        if(err) return reject(err);
+        resolve(data);
+      }
+    );
+  });
+};
+module.exports = { getAllProductTypes, getSingleProductType, addNewProductType, editNewProductType, deleteSingleProductType };
