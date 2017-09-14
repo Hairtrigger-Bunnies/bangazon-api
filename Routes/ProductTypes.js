@@ -5,7 +5,7 @@ const { Router } = require("express");
 // sets router to equal Router and then gets executed
 const router = Router();
 // sets the object getProductTypes to equal the product types controller
-const { getProductTypes, getOneProductType, addProductType } = require("../Controllers/ProductTypesCtrl");
+const { getProductTypes, getOneProductType, addProductType, editProductType } = require("../Controllers/ProductTypesCtrl");
 
 // sets the route for getting all product types
 router.get("/productTypes", getProductTypes);
