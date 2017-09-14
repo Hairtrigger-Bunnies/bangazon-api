@@ -41,8 +41,6 @@ const addNewPaymentType = body => {
 };
 
 const editNewPaymentType = (body, id) => {
-  console.log("body", body);
-  console.log("id", id);
   return new Promise((resolve, reject) => {
     db.run(
       `UPDATE Payment_Types SET 
