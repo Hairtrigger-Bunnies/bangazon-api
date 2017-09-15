@@ -43,7 +43,7 @@ const postSingleProduct = (body) => {
 };
 
 
-const putSingleProduct = (body) => {
+const putSingleProduct = (body, id) => {
   return new Promise( (resolve, reject) => {
     db.run(`UPDATE Products 
             SET title = '${body.title}', 

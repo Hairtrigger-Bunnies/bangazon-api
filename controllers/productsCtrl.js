@@ -28,7 +28,7 @@ module.exports.postOneProduct = (req, res, next) => {
 };
 
 module.exports.putOneProduct = (req, res, next) => {
-  putSingleProduct(req.body)
+  putSingleProduct(req.body, req.params.id)
   .then( (data) => {
     res.status(200).json(data);
   })
