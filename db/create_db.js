@@ -28,6 +28,9 @@ console.log('orders', orders[0]);
 
 console.log('product_types', product_types[0]);
 
+let departments = generateDepartments();
+console.log('employees', employees[0]);
+
 let employees = generateEmployees(departments.length);
 console.log('employees', employees[0]);
 

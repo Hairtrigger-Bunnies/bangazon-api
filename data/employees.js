@@ -12,6 +12,7 @@ module.exports.generateEmployees = (deptsLen) => {
     let email = faker.internet.email();
     let address = faker.address.streetAddress();
     let phone = faker.phone.phoneNumberFormat();
+    let is_supervisor = faker.random.objectElement({one: true, two: false, three: false, four: false});
 
     employees.push({
       "first_name": firstName,
