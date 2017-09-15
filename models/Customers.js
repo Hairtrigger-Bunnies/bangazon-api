@@ -43,7 +43,7 @@ const postSingleCustomer = (body) => {
   });
 };
 
-const putSingleCustomer = (body) => {
+const putSingleCustomer = (body, id) => {
   return new Promise( (resolve, reject) => {
     db.run(`UPDATE Customers 
             SET first_name = '${body.first_name}', 
