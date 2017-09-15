@@ -50,7 +50,3 @@ module.exports.deleteOneCustomer = ({params: {id}}, res, next) => {
   })
   .catch( (err) => next(err));
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> 94ccd1a54e170d3cd598e1626eeefa49a92cd639
