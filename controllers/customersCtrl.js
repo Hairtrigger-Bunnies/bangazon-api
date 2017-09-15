@@ -1,17 +1,22 @@
 'use strict';
 
-const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer, getAllInactiveCustomers } = require('../models/Customers');
+const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer, getInactiveCustomers } = require('../models/Customers');
 
 module.exports.getCustomers = (req, res, next) => {
-  if(req.query.active === "false"){
-    getAllInactiveCustomers();
+  if (req.query.active === "false"){
+    getInactiveCustomers()
+    .then( (data) => {
+      res.status(200).json(data);
+    })
+    .catch( (err) => next(err));
   }
-  if(req.query.active === "true")
+  else {
   getAllCustomers()
   .then( (data) => {
     res.status(200).json(data);
   })
   .catch( (err) => next(err));
+  }
 };
 
 module.exports.getOneCustomer = ({params: {id}}, res, next) => {
@@ -45,3 +50,7 @@ module.exports.deleteOneCustomer = ({params: {id}}, res, next) => {
   })
   .catch( (err) => next(err));
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 94ccd1a54e170d3cd598e1626eeefa49a92cd639
