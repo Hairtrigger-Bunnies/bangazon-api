@@ -79,7 +79,7 @@ const deleteSingleCustomer = (id) => {
 
 const getInactiveCustomers = () => {
   return new Promise( (resolve, reject) => {
-    db.all(`SELECT * FROM Customers WHERE active IS null`, (err, data) => {
+    db.all(`SELECT * FROM Customers LEFT OUTER JOIN Orders ON Customers.CustomerID = Orders.customer_id WHERE Orders.customer_id IS NULL`, (err, data) => {
       if (err) return reject(err);
       resolve(data);
     });
