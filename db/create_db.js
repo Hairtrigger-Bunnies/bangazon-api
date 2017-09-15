@@ -68,8 +68,7 @@ db.serialize(function() {
         CustomerID INTEGER PRIMARY KEY, 
         first_name TEXT,
         last_name TEXT,
-        creation_date DATE,        
-        active TEXT,
+        creation_date TEXT,        
         last_login TEXT,
         email TEXT,
         address TEXT,
@@ -85,20 +84,20 @@ db.serialize(function() {
     );
 
     db.run(`CREATE TABLE IF NOT EXISTS Employees (
-    EmployeeID INTEGER PRIMARY KEY, 
-    first_name TEXT,
-    last_name TEXT,
-    department_id INT,
-    email TEXT,
-    address TEXT,
-    phone_number INT,
-    is_supervisor TEXT)`
+        EmployeeID INTEGER PRIMARY KEY, 
+        first_name TEXT,
+        last_name TEXT,
+        department_id INT,
+        email TEXT,
+        address TEXT,
+        phone_number INT,
+        is_supervisor TEXT)`
     );
 
     db.run(`CREATE TABLE IF NOT EXISTS Computers (
         ComputerID INTEGER PRIMARY KEY, 
         assigned_employee TEXT,
-        purchase_date INT,
+        purchase_date TEXT,
         decommission_date INT)`
     );
 
@@ -128,12 +127,12 @@ db.serialize(function() {
 
     orders.forEach( ({order_date, payment_type_id, customer_id}) => {
         db.run(`INSERT INTO Orders (order_date, payment_type_id, customer_id) 
-                VALUES (${order_date}, ${payment_type_id}, "${customer_id}")`);
+                VALUES ("${order_date}", ${payment_type_id}, "${customer_id}")`);
     });
 
-    customers.forEach( ({first_name, last_name, creation_date, active, last_login, email, address, phone_number}) => {
-        db.run(`INSERT INTO Customers (first_name, last_name, creation_date, active, last_login, email, address, phone_number) 
-                VALUES ("${first_name}", "${last_name}", ${creation_date}, ${active}, "${last_login}", "${email}", "${address}", "${phone_number}")`);
+    customers.forEach( ({first_name, last_name, creation_date, last_login, email, address, phone_number}) => {
+        db.run(`INSERT INTO Customers (first_name, last_name, creation_date, last_login, email, address, phone_number) 
+                VALUES ("${first_name}", "${last_name}", "${creation_date}", "${last_login}", "${email}", "${address}", "${phone_number}")`);
     });
 
     employees.forEach( ({first_name, last_name, department_id, email, address, phone_number, is_supervisor}) => {
