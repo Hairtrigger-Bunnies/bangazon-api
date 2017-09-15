@@ -24,7 +24,7 @@ const getSingleProduct = (id) => {
   });
 };
 
-const postOneProduct = (body) => {
+const postSingleProduct = (body) => {
   console.log("post new product from model");
   return new Promise( (resolve, reject) => {
     db.run(`INSERT INTO Products (title, price, description, type_id, customer_id) VALUES (
@@ -43,7 +43,7 @@ const postOneProduct = (body) => {
 };
 
 
-const putOneProduct = (body) => {
+const putSingleProduct = (id) => {
   return new Promise( (resolve, reject) => {
     db.run(`UPDATE Products 
             SET title = '${body.title}', 
@@ -74,4 +74,4 @@ const deleteSingleProduct = (id) => {
   });
 };
 
-module.exports = { getAllProducts, getSingleProduct, postOneProduct, putOneProduct, deleteSingleProduct };
+module.exports = { getAllProducts, getSingleProduct, postSingleProduct, putSingleProduct, deleteSingleProduct };

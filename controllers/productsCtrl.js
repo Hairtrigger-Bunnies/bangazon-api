@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllProducts, getSingleProduct, postOneProduct, putOneProduct, deleteOneProduct } = require('../models/Products');
+const { getAllProducts, getSingleProduct, postSingleProduct, putSingleProduct, deleteSingleProduct } = require('../models/Products');
 
 module.exports.getProducts = (req, res, next) => {
   getAllProducts()
@@ -18,17 +18,17 @@ module.exports.getOneProduct = ({params: {id}}, res, next) => {
   .catch( (err) => next(err));
 };
 
-module.exports.postNewProduct = (req, res, next) => {
+module.exports.postOneProduct = (req, res, next) => {
   console.log("from ctrl", req.body);
-  postOneProduct(req.body)
+  postSingleProduct(req.body)
   .then( (data) => {
     res.status(200).json(data);
   })
   .catch( (err) => next(err));
 };
 
-module.exports.putNewProduct = (req, res, next) => {
-  putOneProduct(req.body)
+module.exports.putOneProduct = (req, res, next) => {
+  putSingleProduct(req.body)
   .then( (data) => {
     res.status(200).json(data);
   })
