@@ -6,7 +6,7 @@ const { getCustomers, getOneCustomer, postOneCustomer, putOneCustomer, deleteOne
 
 router.delete('/customers/:id', deleteOneCustomer);
 router.post('/customers', postOneCustomer);
-router.put('/customers', putOneCustomer);
+router.put('/customers/:id', putOneCustomer);
 router.get('/customers', getCustomers);
 router.get('/customers/:id', getOneCustomer);
 
