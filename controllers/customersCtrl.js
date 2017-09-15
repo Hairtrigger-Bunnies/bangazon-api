@@ -10,11 +10,13 @@ module.exports.getCustomers = (req, res, next) => {
     })
     .catch( (err) => next(err));
   }
+  else {
   getAllCustomers()
   .then( (data) => {
     res.status(200).json(data);
   })
   .catch( (err) => next(err));
+  }
 };
 
 module.exports.getOneCustomer = ({params: {id}}, res, next) => {
