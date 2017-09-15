@@ -12,38 +12,19 @@ const { generateEmployees } = require('../data/employees');
 const { generateTrainingPrograms } = require('../data/training_programs');
 const { generateDepartments } = require('../data/departments');
 
-// Create customer collection...
+// Create collections...
 let customers = generateCustomers();
-console.log('customers', customers[0]);
-// Then pass its length, and the product types' length, into the function to create products,
-// so we can randomly assign customer and product type ids to each product 
 let products = generateProducts(product_types.length, customers.length);
-console.log('products', products[0]);
-
 let payment_types = generatePaymentTypes(customers.length);
-console.log('pay_types', payment_types[0]);
-
 let orders = generateOrders(payment_types.length, customers.length);
-console.log('orders', orders[0]);
-
-console.log('product_types', product_types[0]);
-
 let departments = generateDepartments();
-console.log('employees', departments[0]);
-
 let employees = generateEmployees(departments.length);
-console.log('employees', employees[0]);
-
 let computers = generateComputers(employees.length);
-console.log('computers', computers[0]);
-
 let training_programs = generateTrainingPrograms();
-console.log('training_programs', training_programs);
-
 
 // inProduction is true or false, but sqlite doesn't support. So we set to Int & use 1 and 0
 db.serialize(function() {
-    // Need to drop in this order, since shows depends on directors id props
+    // Need to drop in this order, since shows depends on directors id props and employees
     db.run(`DROP TABLE IF EXISTS Products`);
     db.run(`DROP TABLE IF EXISTS Payment_Types`);
     db.run(`DROP TABLE IF EXISTS Product_Types`);
@@ -54,7 +35,6 @@ db.serialize(function() {
     db.run(`DROP TABLE IF EXISTS Computers`);
     db.run(`DROP TABLE IF EXISTS Training_Programs`);
     
-
     //CREATE TABLES AND COLUMNS
     db.run(`CREATE TABLE IF NOT EXISTS Products (
       ProductID INTEGER PRIMARY KEY, 
@@ -88,7 +68,7 @@ db.serialize(function() {
         CustomerID INTEGER PRIMARY KEY, 
         first_name TEXT,
         last_name TEXT,
-        creation_date INT,        
+        creation_date DATE,        
         active TEXT,
         last_login TEXT,
         email TEXT,
@@ -174,9 +154,5 @@ db.serialize(function() {
     training_programs.forEach( ({program_name, start_date, end_date, max_attendees}) => {
         db.run(`INSERT INTO Training_Programs (program_name, start_date, end_date, max_attendees) 
                 VALUES ("${program_name}", "${start_date}", "${end_date}", "${max_attendees}")`);
-    });
-      
+    });   
 });
-
-
-//scripts: 'db:reset': "node db/build-db", 'start': "nodemon blah"

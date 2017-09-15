@@ -9,15 +9,14 @@ module.exports.generateCustomers = () => {
   for (let i = 0; i < 50; i++) {
     let firstName = faker.name.firstName();
     let lastName = faker.name.lastName();
-    // let recentdate = faker.date.recent();
+    // let recentdate = faker.date.recent().toISOString();
     let creation_date = null;
     let activity = null;
-    let lastLogin = null;
+    let lastLogin = faker.date.recent();
     let email = faker.internet.email();
     let address = faker.address.streetAddress();
     let phone = faker.phone.phoneNumberFormat();
-    // let lastLogin = faker.date.recent();  
-    // recentdate.toISOString()  
+    // let lastLogin = recentdate.toISOString()  
 
     customers.push({
       "first_name": firstName,
