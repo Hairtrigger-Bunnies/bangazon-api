@@ -41,3 +41,7 @@ module.exports.deleteOneCustomer = ({params: {id}}, res, next) => {
   })
   .catch( (err) => next(err));
 };
+
+// By using the URL parameter /customers/?active=false,
+//  the JSON response should only contain customers that don't 
+//  have any orders placed yet.
