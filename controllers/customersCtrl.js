@@ -27,7 +27,7 @@ module.exports.postOneCustomer = (req, res, next) => {
 };
 
 module.exports.putOneCustomer = (req, res, next) => {
-  putSingleCustomer(req.body)
+  putSingleCustomer(req.body, req.params.id)
   .then( (data) => {
     res.status(200).json(data);
   })
