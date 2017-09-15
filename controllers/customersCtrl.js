@@ -1,8 +1,15 @@
 'use strict';
 
-const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer } = require('../models/Customers');
+const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer, getInactiveCustomers } = require('../models/Customers');
 
 module.exports.getCustomers = (req, res, next) => {
+  if (req.query.active === "false"){
+    getInactiveCustomers()
+    .then( (data) => {
+      res.status(200).json(data);
+    })
+    .catch( (err) => next(err));
+  }
   getAllCustomers()
   .then( (data) => {
     res.status(200).json(data);
@@ -42,6 +49,3 @@ module.exports.deleteOneCustomer = ({params: {id}}, res, next) => {
   .catch( (err) => next(err));
 };
 
-// By using the URL parameter /customers/?active=false,
-//  the JSON response should only contain customers that don't 
-//  have any orders placed yet.
