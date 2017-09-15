@@ -2,7 +2,7 @@
 
 const { Router } = require('express');
 const router = Router();
-const { getCustomers, getOneCustomer, postOneCustomer, putOneCustomer, deleteOneCustomer } = require('../controllers/customersCtrl');
+const { getCustomers, getOneCustomer, postOneCustomer, putOneCustomer, deleteOneCustomer, getInactiveCustomers } = require('../controllers/customersCtrl');
 
 router.delete('/customers/:id', deleteOneCustomer);
 router.post('/customers', postOneCustomer);

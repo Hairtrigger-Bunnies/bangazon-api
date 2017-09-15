@@ -77,4 +77,17 @@ const deleteSingleCustomer = (id) => {
   });
 };
 
-module.exports = { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer };
+const getAllInactiveCustomers = () => {
+  console.log("get all inactive customers model");
+  return new Promise( (resolve, reject) => {
+    db.get('SELECT * FROM Customers WHERE active IS null ', (err, data) => {
+      if (err) {
+        console.log("error", err);
+        return reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
+module.exports = { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer, getAllInactiveCustomers };

@@ -1,8 +1,12 @@
 'use strict';
 
-const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer } = require('../models/Customers');
+const { getAllCustomers, getSingleCustomer, postSingleCustomer, putSingleCustomer, deleteSingleCustomer, getAllInactiveCustomers } = require('../models/Customers');
 
 module.exports.getCustomers = (req, res, next) => {
+  if(req.query.active === "false"){
+    getAllInactiveCustomers();
+  }
+  if(req.query.active === "true")
   getAllCustomers()
   .then( (data) => {
     res.status(200).json(data);
