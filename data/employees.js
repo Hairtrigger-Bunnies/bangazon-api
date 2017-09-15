@@ -21,7 +21,7 @@ module.exports.generateEmployees = (deptsLen) => {
       "email": email,
       "address": address,
       "phone_number": phone,
-      "is_supervisor": false
+      "is_supervisor": is_supervisor
     });
   }
 

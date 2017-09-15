@@ -2,18 +2,20 @@
 
 const faker = require('faker')
 
-module.exports.generateDepartments = () => {
+module.exports.generateDepartments = (empFirst, empLast, empsLen) => {
   let departments = [];
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 10; i++) {
     let name = faker.company.companyName();
     let expense_budget = faker.commerce.price(100000.00,5000000.00, 2, "$");
-    let supervisor = let dept_id = Math.floor(Math.random() * deptsLen) + 1;
+    let supervisor_first = faker.name.firstName();
+    let supervisor_last = faker.name.lastName();
 
     departments.push({
       "department_name": name,
       "expense_budget": expense_budget,
-      "is_supervisor": supervisor
+      "supervisor_first": supervisor_first,
+      "supervisor_last": supervisor_last
     });
   };
 
