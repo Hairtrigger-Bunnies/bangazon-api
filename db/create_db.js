@@ -8,9 +8,9 @@ const { generateProducts } = require('../data/products');
 const { generatePaymentTypes } = require('../data/payment_types');
 const { generateOrders } = require('../data/orders');
 // const { computers } = require('../data/computers');
-// const { employees } = require('../data/employees');
+const { generateEmployees } = require('../data/employees');
 // const { training_programs } = require('../data/training_programs');
-// const { departments } = require('../data/departments');
+const { generateDepartments } = require('../data/departments');
 
 // Create customer collection...
 let customers = generateCustomers();
@@ -27,6 +27,9 @@ let orders = generateOrders(payment_types.length, customers.length);
 console.log('orders', orders[0]);
 
 console.log('product_types', product_types[0]);
+
+let employees = generateEmployees(departments.length);
+console.log('employees', employees[0]);
 
 
 
