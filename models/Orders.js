@@ -54,8 +54,7 @@ const addNewOrder = (body) => {
 						'${body.payment_type_id}', 
 						'${body.customer_id}')`, function(err, data) {
 			if (err) return reject(err);
-			console.log('this', this.lastID);
-			resolve(this.lastID);
+			resolve(data.lastID);
 		});
 	});
 };
@@ -72,20 +71,20 @@ const addProductToOrder = (body, id) => {
 	});
 }
 
-const editSingleOrder = (body, id) => {
-	console.log('bodymod', body);
-	console.log('idmod', id);	
-	return new Promise( (resolve, reject) => {
-		db.run(`UPDATE Orders SET
-						order_date = '${body.order_date}',
-						payment_type_id = '${body.payment_type_id}',
-						customer_id = '${body.customer_id}'
-						WHERE OrderID = '${id}'`, (err, data) => {
-			if (err) return reject(err);
-			resolve(data);
-		});
-	});
-};
+// const editSingleOrder = (body, id) => {
+// 	console.log('bodymod', body);
+// 	console.log('idmod', id);	
+// 	return new Promise( (resolve, reject) => {
+// 		db.run(`UPDATE Orders SET
+// 						order_date = '${body.order_date}',
+// 						payment_type_id = '${body.payment_type_id}',
+// 						customer_id = '${body.customer_id}'
+// 						WHERE OrderID = '${id}'`, (err, data) => {
+// 			if (err) return reject(err);
+// 			resolve(data);
+// 		});
+// 	});
+// };
 
 const deleteSingleOrder = (id) => {
 	console.log('id', id);
@@ -98,4 +97,4 @@ const deleteSingleOrder = (id) => {
 	});
 };
 
-module.exports = { getAllOrders, getSingleOrder, addNewOrder, editSingleOrder, deleteSingleOrder, addProductToOrder };
+module.exports = { getAllOrders, getSingleOrder, addNewOrder, deleteSingleOrder, addProductToOrder };
