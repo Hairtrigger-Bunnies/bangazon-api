@@ -52,9 +52,6 @@ The [DB browser for SQLite](http://sqlitebrowser.org/) will let you view, query 
 1. Run “npm install body-parser” in the terminal to install body parser, which takes the data from postman and turns it into an object within the html when testing
 
 
-# Installing Bangazon API
-
-
 ## Using the API
 
 
