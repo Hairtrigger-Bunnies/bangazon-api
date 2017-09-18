@@ -52,32 +52,25 @@ const addNewOrder = (body) => {
 		db.run(`INSERT INTO Orders (order_date, payment_type_id, customer_id) VALUES (
 						'${body.order_date}', 
 						'${body.payment_type_id}', 
-						'${body.customer_id}')`, (err, data) => {
+						'${body.customer_id}')`, function(err, data) {
 			if (err) return reject(err);
+			console.log('this', this.lastID);
 			resolve(this.lastID);
 		});
 	});
 };
 
-// CREATE NEW Order
-// DBRUN INSERT () => {
-// 	THIS.LATESTID
-// 	addprodtoorder () {
-// 		insert to join table
-// 	}
-// }
-
-const addProductToOrder = (body) => {
+const addProductToOrder = (body, id) => {
 	return new Promise( (resolve, reject) => {
 		console.log('adding product');
-			db.run(`INSERT INTO Order_Products VALUES (${this.lastID}, 
+		console.log('this', id);
+			db.run(`INSERT INTO Order_Products (OrderID, ProductID) VALUES (${id}, 
 				${body.product_id})`, (err, data) => {
 			if (err) return reject(err);
 			resolve(data);
 		});
 	});
 }
-
 
 const editSingleOrder = (body, id) => {
 	console.log('bodymod', body);

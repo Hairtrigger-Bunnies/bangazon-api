@@ -24,6 +24,7 @@ module.exports.getOneOrder = ({ params: { id } }, res, next) => {
 };
 
 module.exports.addOrder = (req, res, next) => {
+	//WHEN A USER EXISTS WE WILL CHECK IF USER HAS AN EXISTING ORDER TO ADD TO
 	// if (user) {
 	// 	addProductToOrder(this.id)
 	// 	.then( (data) => {
@@ -32,7 +33,8 @@ module.exports.addOrder = (req, res, next) => {
 	// } else {
 		addNewOrder(req.body)
 		.then( (data) => {
-			addProductToOrder(req.body);
+			console.log('data', data);
+			addProductToOrder(req.body, data);
 			res.status(200).json(data);
 		})
 		.catch( (err) => {
@@ -60,10 +62,6 @@ module.exports.deleteOrder = ({params: {id}}, res, next) => {
 		next(err);
 	});
 };
-
-//addprod to order = () =>{
-// is order for user? if false create new order.then(that latestid){  }
-//}
 
 module.exports.getOrderProduct = (req, res, next) => {
 	getOrderProduct(req.body)
