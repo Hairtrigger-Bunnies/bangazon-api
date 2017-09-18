@@ -9,6 +9,7 @@ router.use(require("./customers"));
 router.use(require("./productTypes"));
 router.use(require("./paymentTypes"));
 router.use(require("./orderProducts"));
+router.use(require("./employees"));
 
 router.get("/", (req, res) => {
   //provide endpoints
@@ -17,8 +18,8 @@ router.get("/", (req, res) => {
     products: "/bangazon-api/products",
     productTypes: "/bangazon-api/productTypes",
     paymentTypes: "/bangazon-api/paymentTypes",
-    customers: "/bangazon-api/customers",
-    orderProducts: "/bangazon-api/orderProducts"
+    customers: "/bangazon-api/customers"
+    // orderProducts: "/bangazon-api/orderProducts"
   });
 });
 

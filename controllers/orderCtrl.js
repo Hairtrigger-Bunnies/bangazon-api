@@ -54,3 +54,17 @@ module.exports.deleteOrder = ({params: {id}}, res, next) => {
 	});
 };
 
+//addprod to order = () =>{
+// is order for user? if false create new order.then(that latestid){  }
+//}
+
+module.exports.getOrderProduct = (req, res, next) => {
+	getOrderProduct(req.body)
+	.then((data) => {
+			res.status(200).end('added');
+	})
+	.catch((err)=>{
+			next(err);
+	})
+}
+

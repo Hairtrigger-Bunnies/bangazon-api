@@ -11,6 +11,7 @@ const { generateComputers } = require('../data/computers');
 const { generateEmployees } = require('../data/employees');
 const { generateTrainingPrograms } = require('../data/training_programs');
 const { generateDepartments } = require('../data/departments');
+const { generateOrderProducts } = require('../data/order_products');
 
 // Create collections...
 let customers = generateCustomers();
@@ -21,6 +22,7 @@ let departments = generateDepartments();
 let employees = generateEmployees(departments.length);
 let computers = generateComputers(employees.length);
 let training_programs = generateTrainingPrograms();
+let order_products = generateOrderProducts(orders, products);
 
 // inProduction is true or false, but sqlite doesn't support. So we set to Int & use 1 and 0
 db.serialize(function() {
@@ -34,6 +36,7 @@ db.serialize(function() {
     db.run(`DROP TABLE IF EXISTS Employees`);
     db.run(`DROP TABLE IF EXISTS Computers`);
     db.run(`DROP TABLE IF EXISTS Training_Programs`);
+    db.run(`DROP TABLE IF EXISTS Order_Products`);
     
     //CREATE TABLES AND COLUMNS
     db.run(`CREATE TABLE IF NOT EXISTS Products (
@@ -108,6 +111,19 @@ db.serialize(function() {
         end_date TEXT,
         max_attendees INT)`
     );
+
+    db.run(`CREATE TABLE IF NOT EXISTS Order_Products (
+        OrderProductID INTEGER PRIMARY KEY, 
+        OrderID INT,
+        ProductID INT,
+        FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),        
+        FOREIGN KEY (ProductID) REFERENCES Products(ProductID))`
+    );
+
+    order_products.forEach( ({OrderID, ProductID}) => {
+        db.run(`INSERT INTO Order_Products (OrderID, ProductID)
+                VALUES ("${OrderID}", "${ProductID}")`);
+    });
 
     //INSERT DATA INTO TABLES
     products.forEach( ({title, price, description, type_id, customer_id}) => {
