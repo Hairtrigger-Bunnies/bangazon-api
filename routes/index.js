@@ -8,7 +8,8 @@ router.use(require("./products"));
 router.use(require("./customers"));
 router.use(require("./productTypes"));
 router.use(require("./paymentTypes"));
-// router.use(require("./orderProducts"));
+router.use(require("./orderProducts"));
+router.use(require("./employees"));
 
 router.get("/", (req, res) => {
   //provide endpoints
