@@ -9,6 +9,7 @@ router.use(require("./customers"));
 router.use(require("./productTypes"));
 router.use(require("./paymentTypes"));
 router.use(require("./employees"));
+router.use(require("./departments"));
 
 router.get("/", (req, res) => {
   //provide endpoints
