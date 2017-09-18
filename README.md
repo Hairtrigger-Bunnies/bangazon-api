@@ -54,6 +54,8 @@ The [DB browser for SQLite](http://sqlitebrowser.org/) will let you view, query 
 
 ## Using the API
 
+### Running Nodemon
+On the command line, run 'nodemon app.js' which will allow you to begin testing and checking to see if the tests worked within the localhost
 
 ### Customers
 
