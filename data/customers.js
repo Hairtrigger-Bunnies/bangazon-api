@@ -1,4 +1,3 @@
-// generate a bunch of customers with Faker
 'use strict';
 
 const faker = require('faker')
@@ -27,13 +26,16 @@ module.exports.generateCustomers = () => {
     let past_date = faker.date.past(2);
     let now = Date.now();
     let creation_date = past_date.toISOString();
-    let last_login = faker.date.between(formatDate(past_date), formatDate(now)).toISOString();
+    let date_range = faker.date.between(formatDate(past_date), formatDate(now));
+    let last_login = date_range.toISOString();
 
     let email = faker.internet.email();
     let address = faker.address.streetAddress();
     let phone = faker.phone.phoneNumberFormat();
 
     customers.push({
+      past_date,
+      date_range,
       "first_name": first_name,
       "last_name": last_name,
       "creation_date": creation_date,
