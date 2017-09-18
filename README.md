@@ -84,9 +84,6 @@ Within postman, you are able to accomplish the following:
 
 ### Payment Type
 
-# bangazon-api
-### Product Types
-
 Within postman, you are able to accomplish the following:
 
 * GET ALL- You can access a list of all product types by running a GET call to "http://localhost:8008/paymentTypes"
