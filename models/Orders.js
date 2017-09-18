@@ -45,54 +45,32 @@ const getSingleOrder = (id) => {
   });
 };
 
-const getOrderProduct = () => {
-	return new Promise ( (resolve, reject) => {
-		db.run(
-			`INSERT INTO OrderProducts values (null, ${this
-				.lastID}, ${orderObj.product_id})`,
-			function(err) {
-				if (err) return reject(err); // need to delete new order, too?
-				resolve(this.lastID);
-			}
-		);
-	})
-}
 
-const addSingleOrder = (body) => {
+const addNewOrder = (body) => {
 	return new Promise( (resolve, reject) => {
-		console.log('body', body);
+		console.log('adding new order');
 		db.run(`INSERT INTO Orders (order_date, payment_type_id, customer_id) VALUES (
 						'${body.order_date}', 
 						'${body.payment_type_id}', 
-						'${body.customer_id}')`, (err, data) => {
+						'${body.customer_id}')`, function(err, data) {
 			if (err) return reject(err);
-			resolve(data);
+			console.log('this', this.lastID);
+			resolve(this.lastID);
 		});
 	});
 };
 
-// CREATE NEW Order
-// DBRUN INSERT () => {
-// 	THIS.LATESTID
-// 	addprodtoorder () {
-// 		insert to join table
-// 	}
-// }
-
-// const addSingleOrder = (body) => {
-// 	return new Promise( (resolve, reject) => {
-// 		console.log('body', body);
-// 		db.run(`INSERT INTO Orders (order_date, payment_type_id, customer_id) VALUES (`,
-// 		function () { 
-// 				db.run(`INSERT INTO productOrders VALUES (${this.lastID}, 
-// 					${orderObj.product_id}, null)`, (err, order) => {
-// 				if (err) return reject(err);
-// 				resolve(data);
-// 			});
-// 		});
-// 	});
-// }
-
+const addProductToOrder = (body, id) => {
+	return new Promise( (resolve, reject) => {
+		console.log('adding product');
+		console.log('this', id);
+			db.run(`INSERT INTO Order_Products (OrderID, ProductID) VALUES (${id}, 
+				${body.product_id})`, (err, data) => {
+			if (err) return reject(err);
+			resolve(data);
+		});
+	});
+}
 
 const editSingleOrder = (body, id) => {
 	console.log('bodymod', body);
@@ -120,4 +98,4 @@ const deleteSingleOrder = (id) => {
 	});
 };
 
-module.exports = { getAllOrders, getSingleOrder, addSingleOrder, editSingleOrder, deleteSingleOrder, getOrderProduct };
+module.exports = { getAllOrders, getSingleOrder, addNewOrder, editSingleOrder, deleteSingleOrder, addProductToOrder };
