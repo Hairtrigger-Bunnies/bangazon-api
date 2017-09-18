@@ -19,9 +19,9 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
+  console.log('err', err);  
   res.json({
     message: "Error, Time Warp",
-
     err: err
   });
 });
