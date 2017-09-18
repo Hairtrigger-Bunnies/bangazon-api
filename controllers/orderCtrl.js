@@ -25,12 +25,17 @@ module.exports.getOneOrder = ({ params: { id } }, res, next) => {
 
 module.exports.addOrder = (req, res, next) => {
 	//WHEN A USER EXISTS WE WILL CHECK IF USER HAS AN EXISTING ORDER TO ADD TO
-	// if (user) {
-	// 	addProductToOrder(this.id)
-	// 	.then( (data) => {
-	// 		res.status(200).json(data);
-	// 	})
-	// } else {
+		if (req.params.id) {
+			console.log('i have a param');
+			addProductToOrder(req.body, req.params.id)
+			.then( (data) => {
+				res.status(200).json(data);
+			})
+			.catch( (err) => {
+				console.log(err);
+				next(err);
+			});
+	} else {
 		addNewOrder(req.body)
 		.then( (data) => {
 			console.log('data', data);
@@ -51,6 +56,7 @@ module.exports.editOrder = (req, res, next) => {
 	.catch( (err) => {
 		next(err);
 	});
+};
 };
 
 module.exports.deleteOrder = ({params: {id}}, res, next) => {
