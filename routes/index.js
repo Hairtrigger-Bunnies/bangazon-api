@@ -18,8 +18,8 @@ router.get("/", (req, res) => {
     products: "/bangazon-api/products",
     productTypes: "/bangazon-api/productTypes",
     paymentTypes: "/bangazon-api/paymentTypes",
-    customers: "/bangazon-api/customers",
-    orderProducts: "/bangazon-api/orderProducts"
+    customers: "/bangazon-api/customers"
+    // orderProducts: "/bangazon-api/orderProducts"
   });
 });
 
