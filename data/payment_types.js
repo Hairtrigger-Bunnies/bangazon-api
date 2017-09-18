@@ -1,5 +1,3 @@
-
-// using Faker to generate a pile of product types and products
 'use strict';
 
 const faker = require('faker');
@@ -10,7 +8,7 @@ module.exports.generatePaymentTypes = (customersLen) => {
   for (let i = 0; i < 25; i++) {
     let type = faker.finance.transactionType();
     let account_number = faker.finance.account();
-    let customer_id = Math.floor(Math.random() * customersLen) + 1;
+    let customer_id = [Math.floor(Math.random() * customersLen) + 1];
 
     payment_types.push({
       "payment_type": type,

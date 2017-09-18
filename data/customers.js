@@ -1,4 +1,3 @@
-// generate a bunch of customers with Faker
 'use strict';
 
 const faker = require('faker')

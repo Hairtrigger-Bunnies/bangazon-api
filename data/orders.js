@@ -1,9 +1,8 @@
-// using Faker to generate a pile of orders
 'use strict';
 
 const faker = require('faker');
 
-module.exports.generateOrders = (payTypesLen, customers) => {
+module.exports.generateOrders = (payTypes, customers) => {
   let orders = [];
 
   for (let i = 0; i < 25; i++) {
@@ -20,10 +19,14 @@ module.exports.generateOrders = (payTypesLen, customers) => {
   
       return [year, month, day].join('-');
     }
+    let customer_id = payTypes[i].customer_id;
 
-    let order_date = faker.date.between(formatDate(customers[i].past_date), formatDate(customers[i].date_range)).toISOString();
-    let payment_type_id = Math.floor(Math.random() * payTypesLen) + 1;
-    let customer_id = Math.floor(Math.random() * customers.length) + 1;
+    //PAYMENTTYPE.CUSTOMER_ID MUST = CUSTOMER_ID OF CUSTOMERS[I] DATES
+    //ORDER DATE MUST BE BETWEEN RANGE OF THE CORRECT CUSTOMERS' DATES
+    let order_date = faker.date.between(formatDate(customers[(customer_id)].past_date), formatDate(customers[(customer_id)].date_range)).toISOString();
+    let payment_type_id = [i + 1];
+    //PAYMENT TYPE ID MUST BE SAME AS ASSOCIATED CUSTOMER ID (IN PAYMENT TYPE TABLE, CUSTOMER HAS PAYMENTTYPEID)
+    //CUSTOMERID = PAYMENT_TYPE.CUSTOMERID?
 
     orders.push({
       order_date,
