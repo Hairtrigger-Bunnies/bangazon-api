@@ -169,7 +169,3 @@ Within postman, you are able to accomplish the following:
 * POST- You can enter a new product type by running a Post call to "http://localhost:8008/paymentTypes"
     * You must put a `name` with a post.
     * Example: `{ "name" =  '${Mustaches}' }`
-
-### Order Products
-
-### Employees
