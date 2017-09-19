@@ -131,10 +131,7 @@ Within postman, you are able to accomplish the following:
     * You must put a `name` with a post.
     * Example: `{ “name" =  ‘${Chocolate Frogs}’ }`
 
-
 ### Order
-
-### Product Types
 
 Within postman, you are able to accomplish the following:
 
