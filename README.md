@@ -18,9 +18,9 @@ Visit the [SQLite downloads](https://www.sqlite.org/download.html) and download 
 
 The [DB browser for SQLite](http://sqlitebrowser.org/) will let you view, query and manage your databases during the course.
 
-## Visual Studio Code
+### Text Editor
 
-[Visual Studio Code](https://code.visualstudio.com/download) is Microsoft's cross-platform editor that we'll be using during orientation for writing C# and building .NET applications. Make sure you add the [C# extension](https://code.visualstudio.com/Docs/languages/csharp) immediately after installation completes.
+Download and use any text editor of your choosing: SublimeText, VS Code, etc.
 
 ## For both OSX and Windows users
 
