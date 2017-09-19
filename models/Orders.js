@@ -45,69 +45,46 @@ const getSingleOrder = (id) => {
   });
 };
 
-const getOrderProduct = () => {
-	return new Promise ( (resolve, reject) => {
-		db.run(
-			`INSERT INTO OrderProducts values (null, ${this
-				.lastID}, ${orderObj.product_id})`,
-			function(err) {
-				if (err) return reject(err); // need to delete new order, too?
-				resolve(this.lastID);
-			}
-		);
-	})
-}
 
-const addSingleOrder = (body) => {
+const addNewOrder = (body) => {
 	return new Promise( (resolve, reject) => {
-		console.log('body', body);
+		console.log('adding new order');
 		db.run(`INSERT INTO Orders (order_date, payment_type_id, customer_id) VALUES (
 						'${body.order_date}', 
 						'${body.payment_type_id}', 
-						'${body.customer_id}')`, (err, data) => {
+						'${body.customer_id}')`, function(err, data) {
 			if (err) return reject(err);
-			resolve(data);
+			resolve(data.lastID);
 		});
 	});
 };
 
-// CREATE NEW Order
-// DBRUN INSERT () => {
-// 	THIS.LATESTID
-// 	addprodtoorder () {
-// 		insert to join table
-// 	}
-// }
+const addProductToOrder = (body, id) => {
+	return new Promise( (resolve, reject) => {
+		console.log('adding product');
+		console.log('this', id);
+			db.run(`INSERT INTO Order_Products (OrderID, ProductID) VALUES (${id}, 
+				${body.product_id})`, (err, data) => {
+			if (err) return reject(err);
+			resolve(data);
+		});
+	});
+}
 
-// const addSingleOrder = (body) => {
+// const editSingleOrder = (body, id) => {
+// 	console.log('bodymod', body);
+// 	console.log('idmod', id);	
 // 	return new Promise( (resolve, reject) => {
-// 		console.log('body', body);
-// 		db.run(`INSERT INTO Orders (order_date, payment_type_id, customer_id) VALUES (`,
-// 		function () { 
-// 				db.run(`INSERT INTO productOrders VALUES (${this.lastID}, 
-// 					${orderObj.product_id}, null)`, (err, order) => {
-// 				if (err) return reject(err);
-// 				resolve(data);
-// 			});
+// 		db.run(`UPDATE Orders SET
+// 						order_date = '${body.order_date}',
+// 						payment_type_id = '${body.payment_type_id}',
+// 						customer_id = '${body.customer_id}'
+// 						WHERE OrderID = '${id}'`, (err, data) => {
+// 			if (err) return reject(err);
+// 			resolve(data);
 // 		});
 // 	});
-// }
-
-
-const editSingleOrder = (body, id) => {
-	console.log('bodymod', body);
-	console.log('idmod', id);	
-	return new Promise( (resolve, reject) => {
-		db.run(`UPDATE Orders SET
-						order_date = '${body.order_date}',
-						payment_type_id = '${body.payment_type_id}',
-						customer_id = '${body.customer_id}'
-						WHERE OrderID = '${id}'`, (err, data) => {
-			if (err) return reject(err);
-			resolve(data);
-		});
-	});
-};
+// };
 
 const deleteSingleOrder = (id) => {
 	console.log('id', id);
@@ -120,4 +97,4 @@ const deleteSingleOrder = (id) => {
 	});
 };
 
-module.exports = { getAllOrders, getSingleOrder, addSingleOrder, editSingleOrder, deleteSingleOrder, getOrderProduct };
+module.exports = { getAllOrders, getSingleOrder, addNewOrder, deleteSingleOrder, addProductToOrder };

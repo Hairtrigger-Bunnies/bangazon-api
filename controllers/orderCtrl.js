@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllOrders, getSingleOrder, addSingleOrder, editSingleOrder, deleteSingleOrder } = require('../models/Orders');
+const { getAllOrders, getSingleOrder, addNewOrder, editSingleOrder, deleteSingleOrder, addProductToOrder } = require('../models/Orders');
 
 module.exports.getOrders = (req, res, next) => {
   getAllOrders()
@@ -24,15 +24,29 @@ module.exports.getOneOrder = ({ params: { id } }, res, next) => {
 };
 
 module.exports.addOrder = (req, res, next) => {
-	addSingleOrder(req.body)
-	.then( (data) => {
-		res.status(200).json(data);
-	})
-	.catch( (err) => {
-		console.log('err', err);
-		next(err);
-	});
-};
+	//WHEN A USER EXISTS WE WILL CHECK IF USER HAS AN EXISTING ORDER TO ADD TO
+		if (req.params.id) {
+			console.log('i have a param');
+			addProductToOrder(req.body, req.params.id)
+			.then( (data) => {
+				res.status(200).json(data);
+			})
+			.catch( (err) => {
+				console.log(err);
+				next(err);
+			});
+	} else {
+		addNewOrder(req.body)
+		.then( (data) => {
+			console.log('data', data);
+			addProductToOrder(req.body, data);
+			res.status(200).json(data);
+		})
+		.catch( (err) => {
+			console.log('err', err);
+			next(err);
+		});
+	}
 
 module.exports.editOrder = (req, res, next) => {
 	editSingleOrder(req.body, req.params.id)
@@ -42,6 +56,7 @@ module.exports.editOrder = (req, res, next) => {
 	.catch( (err) => {
 		next(err);
 	});
+};
 };
 
 module.exports.deleteOrder = ({params: {id}}, res, next) => {
@@ -53,10 +68,6 @@ module.exports.deleteOrder = ({params: {id}}, res, next) => {
 		next(err);
 	});
 };
-
-//addprod to order = () =>{
-// is order for user? if false create new order.then(that latestid){  }
-//}
 
 module.exports.getOrderProduct = (req, res, next) => {
 	getOrderProduct(req.body)
