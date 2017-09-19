@@ -135,19 +135,21 @@ Within postman, you are able to accomplish the following:
 
 Within postman, you are able to accomplish the following:
 
-* GET ALL- You can access a list of all product types by running a GET call to "http://localhost:8008/orders"
+* GET ALL- You can access a list of all orders by running a GET call to 'http://localhost:8008/orders'
 
-* GET ONE- You can get the information on a single product type by running a Get call to "http://localhost:8008/orders/0" *OR any number in the database you want to search for to find the correlating object
+* GET ONE- You can get the information on a single order by running a Get call to 'http://localhost:8008/orders/0' OR any number in the database you want to search for to find the correlating object
 
-* PUT- You can update the info on a specific product type by running a Put call to "http://localhost:8008/orders/0" OR whichever product type ID position you're looking to edit 
-    - Running a put requires that you submit the entire object.
-    - example: `{"name" = '${Handlebars}'`
+* DELETE- You can delete an order by running a Delete call to 'http://localhost:8008/orders/0' OR whichever product type position/number you wish to delete
 
-* DELETE- You can delete a product type by running a Delete call to "http://localhost:8008/orders/0" OR whichever product type position/number you wish to delete
-
-* POST- You can enter a new product type by running a Post call to "http://localhost:8008/orders"
-    * You must put a `name` with a post.
-    * Example: `{ "name" =  '${Mustaches}' }`
+* POST- You can enter a new order by running a Post call to 'http://localhost:8008/orders'
+    * You must put an `order_date`, `payment_type_id`, `customer_id` as well as a `product_id` with a post.
+    * Example: ```{
+	        "order_date": null,
+            "payment_type_id": "12",
+            "customer_id": "20",
+            "product_id": 5
+            }```
+    * To add a product to an order, simply run another Post call to that orders' html such as 'http://localhost:8008/orders/20' with the `product_id` of the product you wish to add
 
 ### Payment Type
 
