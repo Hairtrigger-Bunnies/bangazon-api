@@ -25,11 +25,10 @@ const getSingleCustomer = (id) => {
 
 const postSingleCustomer = (body) => {
   return new Promise( (resolve, reject) => {
-    db.run(`INSERT INTO Customers (first_name, last_name, creation_date, active, last_login, email, address, phone_number) VALUES (
+    db.run(`INSERT INTO Customers (first_name, last_name, creation_date, last_login, email, address, phone_number) VALUES (
       '${body.first_name}', 
       '${body.last_name}', 
       '${body.creation_date}',
-      '${body.active}',
       '${body.last_login}',
       '${body.email}',
       '${body.address}',
@@ -49,7 +48,6 @@ const putSingleCustomer = (body, id) => {
             SET first_name = '${body.first_name}', 
                 last_name = '${body.last_name}', 
                 creation_date = '${body.creation_date}', 
-                active = '${body.active}', 
                 last_login = '${body.last_login}', 
                 email = '${body.email}', 
                 address = '${body.address}', 
